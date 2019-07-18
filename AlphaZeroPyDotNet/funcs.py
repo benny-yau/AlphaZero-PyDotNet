@@ -130,16 +130,9 @@ def playMatches(player1, player2, EPISODES, logger, turns_until_tau0, memory = N
                          
                     memory.commit_ltmemory()
              
-                if value == 1:
-                    logger.info('%s WINS!', players[state.PlayerTurn]['name'])
-                    scores[players[state.PlayerTurn]['name']] = scores[players[state.PlayerTurn]['name']] + 1
-                    if state.PlayerTurn == 1: 
-                        sp_scores['sp'] = sp_scores['sp'] + 1
-                    else:
-                        sp_scores['nsp'] = sp_scores['nsp'] + 1
-
-                elif value == -1:
+                if value != 0:
                     logger.info('%s WINS!', players[-state.PlayerTurn]['name'])
+                    print(players[-state.PlayerTurn]['name'] + ' WINS!')
                     scores[players[-state.PlayerTurn]['name']] = scores[players[-state.PlayerTurn]['name']] + 1
                
                     if state.PlayerTurn == 1: 

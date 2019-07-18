@@ -27,7 +27,7 @@ class User():
 			action = input('Enter your chosen action (type \'help\' to find index): ')
 			try:
 				if (action == 'help'):
-					print(GameState.DisplayHelp())
+					GameState.DisplayHelp()
 				elif (int(action) in state.AllowedActions):
 					break;
 			except ValueError:
