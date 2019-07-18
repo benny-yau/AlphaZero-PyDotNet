@@ -1,0 +1,3 @@
+INITIAL_RUN_NUMBER = 1
+INITIAL_MODEL_VERSION = 206 #Start training from model version no
+INITIAL_MEMORY_VERSION =  None
