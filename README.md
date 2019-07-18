@@ -10,4 +10,4 @@ play_between_versions.py - Test the model by playing between different versions<
 
 The project is developed using Visual Studio 2017 with Python Tools for Visual Studio and Python environment 3.7. Ensure the pythonnet module is installed to enable Python to call .NET code (pip install pythonnet).
 
-A pre-trained model is available in the file path: \run_archive\connect4\run0001\models\version206.h5
+A pre-trained model is available in the file path: \run_archive\connect4\run0001\models\version0206.h5
