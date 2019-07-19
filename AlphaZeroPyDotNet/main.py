@@ -23,7 +23,6 @@ import loggers as lg
 
 from settings import run_folder, run_archive_folder
 import initialise
-import pickle
 
 
 lg.logger_main.info('=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*')
@@ -32,19 +31,9 @@ lg.logger_main.info('=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*=*')
 
 env = Game()
 
-# If loading an existing neural network, copy the config file to root
-#if initialise.INITIAL_RUN_NUMBER != None:
-#    copyfile(run_archive_folder  + env.name + '/run' + str(initialise.INITIAL_RUN_NUMBER).zfill(4) + '/config.py', './config.py')
-
 import config
 
-######## LOAD MEMORIES IF NECESSARY ########
-
-if initialise.INITIAL_MEMORY_VERSION == None:
-    memory = Memory(config.MEMORY_SIZE)
-else:
-    print('LOADING MEMORY VERSION ' + str(initialise.INITIAL_MEMORY_VERSION) + '...')
-    memory = pickle.load( open( run_archive_folder + env.name + '/run' + str(initialise.INITIAL_RUN_NUMBER).zfill(4) + "/memory/memory" + str(initialise.INITIAL_MEMORY_VERSION).zfill(4) + ".p",   "rb" ) )
+memory = Memory(config.MEMORY_SIZE)
 
 ######## LOAD MODEL IF NECESSARY ########
 
@@ -102,9 +91,6 @@ while 1:
         print('RETRAINING...')
         current_player.replay(memory.ltmemory)
         print('')
-
-        if iteration % 5 == 0:
-            pickle.dump( memory, open( run_folder + "memory/memory" + str(iteration).zfill(4) + ".p", "wb" ) )
 
         lg.logger_memory.info('====================')
         lg.logger_memory.info('NEW MEMORIES')
